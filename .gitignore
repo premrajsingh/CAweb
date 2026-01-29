@@ -6,3 +6,6 @@ uploads/
 **/dist/
 **/build/
 **/.DS_Store
+
+project_deploy/
+project_deploy.zip
