@@ -8,13 +8,16 @@
   [![React](https://img.shields.io/badge/React-18.x-blue?style=for-the-badge&logo=react)](https://reactjs.org)
   [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
   [![Live Demo](https://img.shields.io/badge/Demo-Live_Site-FF5722?style=for-the-badge&logo=googlechrome)](https://dasguptamaitiassociates.com/)
+  ![Project Type](https://img.shields.io/badge/Project%20Type-Freelance%20%2F%20Commercial-blueviolet?style=for-the-badge)
 </div>
 
 ---
 
 ## 🚀 Executive Summary
 
-**Dasgupta Maiti & Associates (DMA)** is a high-performance, full-stack web platform engineered to digitize the operations of a premier Chartered Accountancy firm. 
+**Dasgupta Maiti & Associates (DMA)** is a high-performance, full-stack commercial web platform engineered to digitize the operations of a premier Chartered Accountancy firm.
+
+> 💼 **Freelance Project**: This application was designed, developed, and delivered as a **freelance solution** for the client *Dasgupta Maiti & Associates*. It is currently deployed and serving as their official digital presence. 
 
 This project goes beyond a simple website; it is a **comprehensive digital office** featuring a custom-built Content Management System (CMS), secure role-based authentication, and an automated deployment pipeline. It serves as the central hub for client interactions, financial auditing services, and firm-wide resource management.
 
