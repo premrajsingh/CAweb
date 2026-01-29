@@ -82,34 +82,37 @@ Designed a custom **DevOps script** (`deploy_prep.sh`) to streamline the build a
 
 ### 3. 🔍 Advanced SEO & Discovery
 *   **Dynamic Metadata**: Utilized `react-helmet-async` to inject dynamic meta-tags for every service and news article, ensuring high visibility on search engines.
-*   **Sitemap Generation**: Custom backend route `/sitemap.xml` dynamically generates XML maps for Google indexing.
-*   **Global Search**: Integrated a MongoDB aggregation pipeline to perform full-text search across Services, News, and Publications simultaneously.
+*   **Unified Search Engine**: Integrated a multi-collection search utility to perform case-insensitive lookups across Services and Publications.
+*   **Automated Sitemaps**: Dynamic XML generation for search engine crawlers.
 
-### 4. 📧 Reliable Communication Infrastructure
-*   **Failover Email System**: Integrated **Zoho Mail API** as a robust alternative to standard SMTP, solving common `ETIMEDOUT` issues on cloud hosting platforms like Render.
-*   **Contact Form Intelligence**: Validates user inputs with `express-validator` before processing requests.
+### 4. 📧 Resilient Communication Infrastructure
+*   **Zoho REST API Integration**: Implemented a modern OAuth2-based mail system using Zoho's REST API. This ensures high-deliverability and bypasses common SMTP port restrictions (e.g., Port 587/465 blocks) on cloud platforms like Render.com.
+*   **Input Validation**: Integrated `express-validator` to ensure data integrity for contact forms and career applications.
+
+### 5. 🛠️ Intelligent Data Migration
+*   **PDF Service Importer**: Developed a custom utility (`pdfImporter.js`) using `pdf-parse` to programmatically extract and structure service data from legacy PDF documents, converting them into Mongoose-ready seed files.
 
 ---
 
 ## 📸 Application Gallery
 
-| **Modern Dashboard** | **Dynamic Newsroom** |
+| **Production Home** | **Expert Insights** |
 |:---:|:---:|
-| <img src="frontend/public/desktop-bg-final-v3.png" width="400" alt="Home Hero"/> | <img src="frontend/public/newsroom.jpg" width="400" alt="Newsroom"/> |
-| *High-conversion Landing Page* | *Real-time Financial Updates* |
+| <img src="frontend/public/home_bg_new.png" width="400" alt="Home Hero"/> | <img src="frontend/public/newsroom.jpg" width="400" alt="Newsroom"/> |
+| *Unified Commercial Platform* | *Real-time Regulatory Updates* |
 
 ---
 
 ## 🛠️ Technical Stack
 
-| Component | Technology | Description |
+| Component | Technology | Role |
 |-----------|------------|-------------|
-| **Frontend** | **React.js** | Functional components, Hooks, Custom Context. |
-| **Styling** | **React Bootstrap** | Responsive grid system and accessible components. |
-| **Backend** | **Node.js + Express** | High-throughput async REST API. |
-| **Database** | **MongoDB (Mongoose)** | NoSQL schema design with complex relationships. |
-| **File Storage** | **Cloudinary** | Optimized CDNs for serving PDF publications & images. |
-| **Email** | **Nodemailer + Zoho** | Transactional email delivery. |
+| **Frontend** | **React.js 18** | Functional architecture with Context API for state management. |
+| **Styling** | **React Bootstrap** | Responsive design with custom glassmorphism components. |
+| **Backend** | **Node.js + Express** | Scalable RESTful API with automated static serving. |
+| **Database** | **MongoDB (Mongoose)** | Complex NoSQL schemas with Slug-based routing. |
+| **File Systems** | **Cloudinary + Multer** | Cloud-based media management and PDF parsing. |
+| **Emailing** | **Nodemailer + Zoho** | Fail-safe transactional email delivery system. |
 
 ---
 
