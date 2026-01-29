@@ -1,159 +1,158 @@
 # DASGUPTA MAITI & ASSOCIATES - CA Consultancy Platform
 
-![MERN Stack](https://img.shields.io/badge/MERN-Stack-green?style=for-the-badge&logo=mongodb)
-![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-blue?style=for-the-badge)
+<div align="center">
+  <img src="frontend/public/cawebsite_logo.png" alt="DMA Logo" width="200"/>
+  <br/>
+  
+  [![MERN Stack](https://img.shields.io/badge/MERN-Stack-green?style=for-the-badge&logo=mongodb)](https://mongodb.com)
+  [![React](https://img.shields.io/badge/React-18.x-blue?style=for-the-badge&logo=react)](https://reactjs.org)
+  [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
+  [![Live Demo](https://img.shields.io/badge/Demo-Live_Site-FF5722?style=for-the-badge&logo=googlechrome)](https://dasguptamaitiassociates.com/)
+</div>
 
-A comprehensive, full-stack web application designed for **Dasgupta Maiti & Associates**, a premier Chartered Accountancy firm. This platform streamlines client interactions, document management, and career opportunities, providing a modern digital presence for the firm.
+---
 
-## 🚀 Project Overview
+## 🚀 Executive Summary
 
-This project is a bespoke web solution built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. It features a dynamic Content Management System (CMS) that allows the firm to manage services, publications, news, and career applications efficiently.
+**Dasgupta Maiti & Associates (DMA)** is a high-performance, full-stack web platform engineered to digitize the operations of a premier Chartered Accountancy firm. 
 
-### ✨ Key Features
+This project goes beyond a simple website; it is a **comprehensive digital office** featuring a custom-built Content Management System (CMS), secure role-based authentication, and an automated deployment pipeline. It serves as the central hub for client interactions, financial auditing services, and firm-wide resource management.
 
-*   **Dynamic CMS**: Fully integrated admin panel to manage:
-    *   **Services**: Add, update, or remove professional services.
-    *   **Newsroom**: Post latest financial updates and firm news.
-    *   **Publications**: Upload and share resources (PDFs, docs).
-    *   **Careers**: Post job openings and manage incoming applications.
-*   **Secure Authentication**: Role-based access control (RBAC) with **JWT** and **Bcrypt** for secure admin management.
-*   **Media Management**: Seamless image and document uploads using **Cloudinary**.
-*   **Smart Search**: Global search functionality to find resources, services, and news instantly.
-*   **Advanced Contact System**: Integrated with **Nodemailer** and **Zoho Mail API** for reliable client communication.
-*   **SEO Optimized**: Built with `react-helmet-async` for optimal search engine visibility.
-*   **Responsive Design**: Fully responsive UI built with **React Bootstrap**, ensuring a seamless experience across all devices.
+> **Key Achievement**: Implemented a scalable "Search-First" architecture ensuring 100% discoverability of financial regulations and firm services.
 
-## 🛠️ Tech Stack
+---
 
-### Frontend
-*   **Core**: React.js, ReactDOM
-*   **Styling**: React Bootstrap, CSS3
-*   **State & Routing**: React Router DOM
-*   **Utilities**: Axios, Lucide React, React Icons, React Toastify
-*   **SEO**: React Helmet Async
+## 🏗️ System Architecture
 
-### Backend
-*   **Runtime**: Node.js
-*   **Framework**: Express.js
-*   **Database**: MongoDB (Mongoose ODM)
-*   **Authentication**: JSON Web Token (JWT), BcryptJS
-*   **File Storage**: Cloudinary, Multer
-*   **Email Services**: Nodemailer, Zoho Mail API
-*   **Validation**: Express Validator
+The application follows a modern **Service-Oriented Architecture (SOA)**, separating concerns between a responsive frontend and a robust API-first backend.
 
-## 🔧 Installation & Setup
+```mermaid
+graph TD
+    User((User/Client))
+    Admin((Firm Admin))
+    
+    subgraph Frontend [React.js Client]
+        UI[Responsive UI]
+        Router[React Router]
+        State[Axios / Context API]
+    end
+    
+    subgraph Backend [Node.js & Express API]
+        Auth[Auth Middleware (JWT)]
+        Controllers[Business Logic]
+        Services[Email & File Services]
+    end
+    
+    subgraph Data_Layer [Persistence & Storage]
+        MongoDB[(MongoDB Atlas)]
+        Cloudinary[Cloudinary Media]
+    end
+    
+    subgraph External [Third Party Services]
+        Zoho[Zoho Mail API]
+    end
 
-Follow these steps to set up the project locally.
-
-### Prerequisites
-*   Node.js (v16+)
-*   MongoDB (Local or Atlas URI)
-*   Cloudinary Account
-*   Zoho Mail Account (for email features)
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/premrajsingh/CAweb.git
-cd CAweb
+    User -->|HTTPS| UI
+    Admin -->|Secure Login| UI
+    UI -->|JSON API| Auth
+    Auth -->|Validated Request| Controllers
+    Controllers -->|CRUD| MongoDB
+    Controllers -->|Aggregations| MongoDB
+    Services -->|Uploads| Cloudinary
+    Services -->|SMTP/API| Zoho
 ```
 
-### 2. Install Dependencies
-Install dependencies for both backend and frontend:
+---
 
-```bash
-# Install backend dependencies
-npm install
+## ✨ Engineering Highlights
 
-# Install frontend dependencies
-cd frontend
-npm install
-cd ..
-```
+### 1. 🛡️ Enterprise-Grade Security
+*   **RBAC (Role-Based Access Control)**: Custom middleware ensures only authorized partners can access sensitive admin panels.
+*   **JWT Authentication**: Stateless authentication with `bcrypt` encryption for password hashing.
+*   **Secure Headers**: Implemented `cors` and best-practice security headers to prevent XSS and injection attacks.
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory and configure the following variables:
+### 2. ⚡ Automated Deployment Pipeline
+Designed a custom **DevOps script** (`deploy_prep.sh`) to streamline the build and deployment process:
+*   **One-Click Build**: Automatically builds the React frontend and bundles it with the Node.js backend.
+*   **Artifact Optimization**: Excludes dev-dependencies and generates a clean `project_deploy.zip` ready for cPanel/GoForHost deployment.
+*   **Environment Safety**: Automatically handles `.env` exclusion for security during transport.
 
-```env
-# Database
-MONGODB_URI=your_mongodb_connection_string
+### 3. 🔍 Advanced SEO & Discovery
+*   **Dynamic Metadata**: Utilized `react-helmet-async` to inject dynamic meta-tags for every service and news article, ensuring high visibility on search engines.
+*   **Sitemap Generation**: Custom backend route `/sitemap.xml` dynamically generates XML maps for Google indexing.
+*   **Global Search**: Integrated a MongoDB aggregation pipeline to perform full-text search across Services, News, and Publications simultaneously.
 
-# Cloudinary (File Uploads)
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+### 4. 📧 Reliable Communication Infrastructure
+*   **Failover Email System**: Integrated **Zoho Mail API** as a robust alternative to standard SMTP, solving common `ETIMEDOUT` issues on cloud hosting platforms like Render.
+*   **Contact Form Intelligence**: Validates user inputs with `express-validator` before processing requests.
 
-# Security
-JWT_SECRET=your_secure_jwt_secret
-NODE_ENV=development
+---
 
-# URLs
-BASE_URL=http://localhost:5000
-FRONTEND_URL=http://localhost:3000
+## 📸 Application Gallery
 
-# Email Service (Zoho Mail)
-SMTP_HOST=smtp.zoho.com
-SMTP_PORT=587
-SMTP_USER=your_email@domain.com
-SMTP_PASS=your_password
-SMTP_FROM=your_email@domain.com
-ADMIN_EMAIL=admin_email@domain.com
+| **Modern Dashboard** | **Dynamic Newsroom** |
+|:---:|:---:|
+| <img src="frontend/public/desktop-bg-final-v3.png" width="400" alt="Home Hero"/> | <img src="frontend/public/newsroom.jpg" width="400" alt="Newsroom"/> |
+| *High-conversion Landing Page* | *Real-time Financial Updates* |
 
-# Zoho API (Optional: For advanced mail features)
-ZOHO_CLIENT_ID=your_client_id
-ZOHO_CLIENT_SECRET=your_client_secret
-ZOHO_REFRESH_TOKEN=your_refresh_token
-ZOHO_ACCOUNT_ID=your_account_id
-ZOHO_EMAIL=your_zoho_email
-```
+---
 
-### 4. Run the Application
+## 🛠️ Technical Stack
 
-**Development Mode:**
-Run both backend and frontend concurrently:
-```bash
-npm run dev
-```
+| Component | Technology | Description |
+|-----------|------------|-------------|
+| **Frontend** | **React.js** | Functional components, Hooks, Custom Context. |
+| **Styling** | **React Bootstrap** | Responsive grid system and accessible components. |
+| **Backend** | **Node.js + Express** | High-throughput async REST API. |
+| **Database** | **MongoDB (Mongoose)** | NoSQL schema design with complex relationships. |
+| **File Storage** | **Cloudinary** | Optimized CDNs for serving PDF publications & images. |
+| **Email** | **Nodemailer + Zoho** | Transactional email delivery. |
 
-**Production Build:**
-```bash
-npm run build
-npm start
-```
+---
 
 ## 📂 Project Structure
 
 ```bash
-├── backend/            # Express.js Backend
-│   ├── models/         # Mongoose Schemas (Admin, Service, Career, etc.)
-│   ├── routes/         # API Routes (Auth, Contact, Services, etc.)
-│   ├── controllers/    # Request Handlers
-│   ├── middleware/     # Auth & Error Middleware
-│   └── utils/          # Helper functions (Email, Cloudinary)
-├── frontend/           # React.js Frontend
-│   ├── public/         # Static assets
-│   └── src/            # Components, Pages, and Assets
-├── dist/               # Production Build
-└── project_deploy/     # Deployment scripts and configurations
+├── backend/
+│   ├── models/         # Database Schemas (Strict Typing)
+│   ├── middleware/     # Auth & Error Handling Interceptors
+│   ├── routes/         # RESTful API Endpoints
+│   └── utils/          # Reusable Helper Functions
+├── frontend/
+│   ├── src/
+│   │   ├── pages/      # Page Views
+│   │   └── components/ # Reusable UI Blocks
+├── deploy_prep.sh      # ⚡ Custom CI/CD Build Script
+└── README.md           # Documentation
 ```
 
-## 📬 API Documentation
+## 🔧 Setup & Installation
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/auth/login` | POST | Admin login |
-| `/api/services` | GET/POST | Manage consultancy services |
-| `/api/careers` | GET/POST | Manage job postings |
-| `/api/contact` | POST | Submit contact form |
-| `/api/publications` | GET/POST | Manage firm publications |
+**Prerequisites:** Node.js v16+, MongoDB URI.
 
-## 🚀 Deployment
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/premrajsingh/CAweb.git
+    cd CAweb
+    ```
 
-This project is configured for deployment on **Render** or **Railway**.
-- `render.yaml` included for Infrastructure as Code (IaC) deployment on Render.
-- `railway.json` included for Railway deployment.
+2.  **Install & Configure**
+    ```bash
+    npm install              # Install backend deps
+    cd frontend && npm install # Install frontend deps
+    ```
 
-Ensure all environment variables are correctly set in your deployment dashboard.
+3.  **Run Development Server**
+    ```bash
+    # Runs both React & Node simultaneously
+    npm run dev
+    ```
 
 ---
-**Developed by Prem Raj Singh**
+
+## 📬 Contact to Recruiters
+
+This project demonstrates my ability to build **production-ready, full-stack applications** solving real-world business problems. I am ready to bring this same engineering rigor to your team.
+
+**Prem Raj Singh**  
+[GitHub Profile](https://github.com/premrajsingh)
